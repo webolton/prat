@@ -1,10 +1,17 @@
 package bootstrap
 
-import "fmt"
+import (
+	"fmt"
+)
+
+var appConfig = config{}
 
 func init() {
-	fmt.Println("called!!!")
+	setEnvironment()
+
+	fmt.Println(appConfig)
 }
 
 func Execute() {
+	fmt.Println(appConfig)
 }
