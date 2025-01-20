@@ -2,29 +2,19 @@ package commands
 
 import (
 	"fmt"
-	"log"
-	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
+	"github.com/webolton/prat/internal/bootstrap"
 )
 
-func init() {
-	rootCmd.AddCommand(versionCmd)
-}
-
-var versionCmd = &cobra.Command{
-	Use:   "version",
-	Short: "Print the version number of prat",
-	Long:  `Prints the version number of prat`,
-	Run: func(cmd *cobra.Command, args []string) {
-
-		err := godotenv.Load()
-		if err != nil {
-			log.Fatal("Error loading .env file")
-		}
-
-		version := os.Getenv("VERSION")
-		fmt.Println("prat " + version)
-	},
+func newVersionCommand(config bootstrap.Config) *cobra.Command {
+	var versionCmd = &cobra.Command{
+		Use:   "version",
+		Short: "Print the version number of prat",
+		Long:  `Prints the version number of prat`,
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println(config.Environment)
+		},
+	}
+	return versionCmd
 }

@@ -5,7 +5,12 @@ import (
 	"github.com/webolton/prat/internal/commands"
 )
 
+var config bootstrap.Config
+
+func init() {
+	config = bootstrap.Execute()
+}
+
 func main() {
-	bootstrap.Execute()
-	commands.Execute()
+	commands.Execute(config)
 }

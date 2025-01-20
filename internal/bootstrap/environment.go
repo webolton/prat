@@ -27,6 +27,6 @@ func setEnvironment() {
 		slog.Error(err.Error())
 		os.Exit(1)
 	} else {
-		appConfig.environment = appEnv
+		config.Environment = appEnv
 	}
 }
