@@ -1,10 +1,16 @@
 package main
 
 import (
+	"github.com/webolton/prat/internal/bootstrap"
 	"github.com/webolton/prat/internal/commands"
 )
 
+var config bootstrap.Config
+
+func init() {
+	config = bootstrap.Execute()
+}
+
 func main() {
-	// bootstrap.Execute()
-	commands.Execute("this would be the config passed down to version")
+	commands.Execute(config)
 }

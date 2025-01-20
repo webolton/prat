@@ -1,5 +1,5 @@
 package bootstrap
 
-type config struct {
-	environment string
+type Config struct {
+	Environment string
 }
